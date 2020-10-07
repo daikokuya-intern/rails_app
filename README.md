@@ -3,10 +3,10 @@
 ```
 $ docker-compose up
 $ bundle install --without production
-
-```
-
-```s
+$ rails db:create
 $ rails db:migrate
 $ rails db:seed
 ```
+
+- email : example@warayaki.jp
+- pass : password

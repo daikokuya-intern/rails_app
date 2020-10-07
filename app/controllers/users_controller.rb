@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     #@users = User.all
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page]).search(params[:search])
   end
 
   # GET /users/:id
@@ -78,6 +78,11 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @users = User.search(params[:search])
   end
 
   private
